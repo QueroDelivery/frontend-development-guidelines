@@ -209,8 +209,72 @@ return (
 ```
 
 TypeScript.
-```sh
+```ts
 ComponentProps = {}
 MethodApiResponse = {}
 MethodApiParams =  {}
+```
+
+Utilizar Interface sempre que possível, Types devem ser utilizados somente quanto obrigado pelo TypeScript,
+como na atribuição de valores.
+Ex:
+```ts
+type value = string | number;
+```
+
+Objetos com mais de 3 atributos precisam de atenção. Se sua interface está ficando grande considere
+quebrar o objeto em outra interface.
+
+Ex:
+```ts
+/* Interface não precisa ser quebrada */
+interface ObjectOne {
+    dummyData: {
+        _id: string;
+        name: string;
+        price: number;
+    }
+}
+
+/* Interface precisa ser quebrada */
+// Ruim
+interface ObjectTwo {
+    dummyDataOne: {
+        _id: string;
+        name: string;
+        price: number
+    },
+    dummyDataTwo: {
+        _id: string;
+        name: string;
+        image: {
+            publicId: string;
+            src: string;
+            version: string;
+        }
+    }
+}
+
+// Bom
+interface DummyDataOne {
+    _id: string;
+    name: string;
+    price: number
+}
+
+interface DummyDataTwo {
+    _id: string;
+    name: string;
+    price: number;
+    image: {
+        publicId: string;
+        src: string;
+        version: string;
+    }
+}
+
+interface ObjectTwo {
+    dummyDataOne: DummyDataOne,
+    dummyDataTwo: DummyDatTwo
+}
 ```
