@@ -278,3 +278,51 @@ interface ObjectTwo {
     dummyDataTwo: DummyDatTwo
 }
 ```
+
+## Type importation 
+
+Motivação: https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export
+
+### Como exportar tipos e interfaces ? 
+
+ Tipos podem estar junto de arquivos, comumentemente quando criamos interfaces de Props, por exemplo. 
+ Porém, se a tipagem precisar ser exportada, ela deve ser instanciada em um arquivo separado de types, para também ser importada dessa forma. Com isso, nós sempre poderemos utilizar o *import type* para esses arquivos;
+
+
+🔴 RUIM
+```ts
+// api/get-products.ts
+
+export type GetProductsData {...}
+
+export function useGetProducts(params): GetProductsData {...}
+
+// components/products-list
+import { useGetProducts, GetProductsData } from '../api/get-products';
+
+const products: GetProductsData = {...}
+
+```
+
+✅ BOM
+```ts
+// api/types
+
+export type GetProductsData {...}
+
+// api/get-products.ts
+import type { GetProductsData } from './types';
+
+export function useGetProducts(params): GetProductsData {...}
+
+// components/products-list
+import { useGetProducts } from '../api/get-products';
+import type { GetProductsData } from './api/types';
+
+const products: GetProductsData = {...}
+
+```
+
+
+
+
