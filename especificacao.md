@@ -83,3 +83,116 @@ Uma feature segue estes princípios:
 6. Uma feature deve ser composta.
 
    Você deve ser capaz de compor várias features na mesma tela ou em telas diferentes sem modificar uma feature.
+   
+## Folder structure
+
+```sh
+└── src/
+    ├── app/                    
+    |
+    ├── assets/             
+    |   ├── brand/ 
+    |   |   ├── {some-image}/
+    |   ├── images/ 
+    |   |   ├── {some-image}/
+    |   ├── svg/ 
+    |   |   ├── {some-svg}/         
+    |   ... 
+    |                                 
+    ├── components/             
+    |   ├── {some-component}/   
+    |   ├── layouts/ 
+    |   |   ├── {some-component}/   
+    |   ...                     
+    |                           
+    ├── config/                
+    |   ├── {some-config}/  
+    |   |   ├── lib/         
+    |   ...                     
+    |                           
+    ├── constants/              
+    |   ├── {some-constant}/        
+    |   ...                     
+    |                           
+    ├── store/               
+    |   ├── {some-context}/        
+    |   ...                     
+    |                           
+    ├── feature/         
+    |   ├── {some-feature}/        
+    |   |   ├── api/            
+    |   |   ├── components/          
+    |   |   └── contexts/
+    |   |   └── hooks/ 
+    |   |   └── constants.ts/     
+    |   |   └── index.tsx/  
+    |   |   └── tpyes.ts/  
+    |   |   └── utils.ts/            
+    |   ...                 
+    |                       
+    ├── hooks/                 
+    |   ├── {some-hook}/        
+    |   ...                 
+    |                       
+    ├── pages/                 
+    |   ├── {some-page}/                
+    |   ...                 
+    |                       
+    ├── services/              
+    |   ├── {some-service}/        
+    |   ...                 
+    |                       
+    ├── styles/                
+    |   ├── {some-style}/        
+    |   ...                 
+    |                       
+    ├── types/                 
+    |   ├── {some-type}/        
+    |   ...                 
+    |                       
+    ├── utils/                 
+    |   ├── {some-util}/        
+    |   ...                 
+    |                       
+    └── index.tsx/          
+```
+## assets/
+- A pasta assets contém todas as imagens, icones, arquivos de fonte, etc. para seu projeto. 
+## components/
+- Contém componentes reutilizáveis ​​que são usados ​​com mais frequência para compor uma Feature ou Página.
+- Esses componentes são quase sempre puros e de apresentação, sem [side-effects](https://medium.com/@remoteupskill/what-is-a-react-side-effect-a5525129d251).
+## layouts/
+- Contém componentes de layout reutilizáveis. Um Componente de Layout é um componente que compõe o layout de uma página. Muitas vezes, ele importa componentes como sidebar,footer, sidebar.
+- Se for provável que seu projeto tenha apenas um único layout, esse diretório pode não ser necessário e o Layout Component pode residir no diretório de componentes.
+## config/
+- Todas as configurações do aplicativo devem ser mantidas neste caminho. 
+- Código de configuração do projeto, variáveis ​​globais, urls etc.
+## lib/
+- Esta pasta contém [fachadas](https://blog.webdevsimplified.com/2022-07/facade-pattern/) para as várias bibliotecas diferentes que você usa em seu projeto.
+- Por exemplo, se você usar o axios library, esta pasta conterá um arquivo para essa biblioteca axios que cria sua própria API sobre a API axios que você usa em seu aplicativo.
+- Isso significa que, em vez de importar axios diretamente em seu projeto, você importaria o arquivo desta pasta associado a axios.
+## constants/
+- Contém strings reutilizáveis ​​e imutáveis, como URLs ou padrões Regex.
+## store/
+- Redux Store.
+## feature/
+- Toda a lógica necessária para uma Feature é colocada em um único diretório. Uma Feature geralmente é composto de muitos outros componentes, locais ou compartilhados. 
+O mesmo vale para todos os recursos: utils, types, hooks e assim por diante.
+- Features geralmente incluem [side-effects](https://medium.com/@remoteupskill/what-is-a-react-side-effect-a5525129d251).
+- Se estiver usando Redux e interagir com o Store, a Feature incluirá um arquivo slice que define o “slice” do Redux Store que o recurso representa.
+## hooks/
+- Contém React Hooks reutilizáveis.
+## pages/
+- Page componente de página. Cada componente de página está associado a uma rota.
+- Page componente compõem o conteúdo de uma página importando Componentes e Features.
+- Um Page componente raramente deve incluir [side-effects](https://medium.com/@remoteupskill/what-is-a-react-side-effect-a5525129d251) e, em vez disso, deve delegar [side-effects](https://medium.com/@remoteupskill/what-is-a-react-side-effect-a5525129d251) as Features.
+## services/
+- Esta pasta contém todo o seu código para interface com qualquer API externa.
+## styles/
+- Estilos reutilizáveis ​​ou globais. 
+- Pode incluir configurações, redefinições ou variáveis.
+## types/
+- Tipos reutilizáveis ​​para projetos que utilizam TypeScript.
+## utils/
+- Funções utilitárias reutilizáveis. Essas funções devem ser sempre puras e não produzir [side-effects](https://medium.com/@remoteupskill/what-is-a-react-side-effect-a5525129d251).
+
