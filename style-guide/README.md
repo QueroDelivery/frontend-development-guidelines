@@ -15,6 +15,7 @@ we **highly recommend** reading it before you continue.
 * [Folder Structure](#folder-structure)
 * [Naming](#naming)
 * [Type Importation](#type-importation)
+* [Avoid using Else](#avoid-using-else)
 
 ## Folder Structure
 
@@ -255,5 +256,47 @@ import type { GetProductsData } from './api/types';
 const products: GetProductsData = {...}
 
 ```
+
+## Avoid using Else
+
+A utilização de else encoraja frequentemente uma estrutura de código mais complexa e torna o código menos legível. Na maioria dos casos, é possível refactorizar o código utilizando retornos antecipados.
+
+Neste trecho de código, é necessário algum poder intelectual para determinar quando essas condições else serão atingidas.
+
+```ts
+if ($conditionA) {
+   if ($conditionB) {
+      // condition A and B passed
+   }
+   else {
+     // condition A passed, B failed
+   }
+}
+else {
+   // condition A failed
+}
+```
+
+Utilizando retornos antecipados, isto torna-se muito mais legível, porque não há tantos caminhos aninhados para seguir. O nosso código tornou-se mais linear.
+
+```ts
+if (! $conditionA) {
+   // condition A failed
+
+   return;
+}
+
+if (! $conditionB) {
+   // condition A passed, B failed
+
+   return;
+}
+
+// condition A and B passed
+```
+O "achatamento do código" ao remover estruturas aninhadas faz com que não tenhamos que pensar tanto para entender os possíveis caminhos que nosso código pode tomar. Isso tem um impacto significativo na legibilidade.
+
+Refs: 
+- https://freek.dev/2212-avoid-using-else
 
 [Back to top ⬆️](#pushpin-table-of-contents)
