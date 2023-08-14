@@ -184,6 +184,12 @@ interface MethodApiResponse {}
 type MethodApiParams = {};
 ```
 
+### Naming Booleans
+
+Refs:
+
+- https://dev.to/michi/tips-on-naming-boolean-variables-cleaner-code-35ig
+
 ## Types
 
 ### When and how create types ?
