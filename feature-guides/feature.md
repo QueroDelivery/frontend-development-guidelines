@@ -15,6 +15,24 @@ Contudo, na prática, é possível que haja situações em que um domínio neces
 
 Se uma interface for usada em duas features(domínios) diferentes, a recomendação é criar uma interface global com todas as propriedades possíveis que aquela interface pode ter até o momento e, posteriormente, dentro de cada domínio, criar uma nova interface para ser usada naquele domínio, com as propriedades que serão necessárias a partir da interface global. Para isso, utilize a estratégia de [Pick do TypeScript](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys).
 
+```tsx
+interface Todo { // Tipagem Global
+  title: string;
+  description: string;
+  completed: boolean;
+}
+
+type PickedProperties = "title" | "completed";
+
+type TodoPreview = Pick<Todo, PickedProperties>; // Tipagem utilizada dentro de um domínio
+
+const todo: TodoPreview = {
+  title: "Clean room",
+  completed: false,
+};
+
+```
+
 ## Exemplo de login
 
 Por exemplo, digamos que queremos implementar uma funcionalidade de login.
