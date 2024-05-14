@@ -184,6 +184,17 @@ interface MethodApiResponse {}
 type MethodApiParams = {};
 ```
 
+### Naming enums.
+
+Enums and your object should be named following uppercase with underscore
+
+```ts
+enum ENUM_MY_FIRST_ENUM {
+  MY_FIRST_ENUM = "MY_FIRST_ENUM",
+  SECOND = "SECOND",
+}
+```
+
 ### Naming Booleans
 
 Refs:
