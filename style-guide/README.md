@@ -358,6 +358,34 @@ Refs:
 
 - https://freek.dev/2212-avoid-using-else
 
+## Styles
+
+Estilos fazem parte da nossa vida diária, quer gostemos ou não, aqui estão listadas algumas boas práticas para melhorar e deixar mais conciso a criação deles.
+
+### Como criar estilos?
+
+Estilos sempre devem ser colocados em arquivos separados, isso é uma obrigatoriedade para quem desenvolve com css mas também uma boa prática pra quem está no mobile.
+
+Deve-se evitar colocar estilos em linha. Porquê? 
+
+#### Sem possibilidade de armazenamento em cache
+
+Os browsers armazenam em cache as folhas de estilo externas para que possam ser carregadas facilmente para posterior apresentação, mas os estilos em linha não podem ser armazenados em cache, uma vez que se encontram no segmento de código html. Assim, sempre que se visita uma página Web, os estilos em linha têm de ser carregados com o html.
+
+#### Inexistência de reutilização
+
+Utilizar a mesma classe css várias vezes deve ser um dos principais objectivos para adicionar estilo a uma aplicação web. À medida que o nosso projeto se torna maior, se não usarmos a mesma classe para o mesmo tipo de estilos, há uma boa possibilidade de escrever estilos redundantes que desnecessariamente tornam o projeto maior. Se escrevermos um estilo inline, nunca poderemos usá-lo várias vezes, o que quebra o princípio [DRY](https://www.digitalocean.com/community/tutorials/what-is-dry-development).
+
+#### Performance 
+
+Inline Styles são conhecidos por causarem um desempenho abaixo do ideal quando aplicados a muitos elementos. Podem, mas não é nada com que se deva preocupar, especialmente porque se trata apenas de variáveis CSS. A sobrecarga de carregar uma folha de estilo externa e lidar com casos dinâmicos com código (condições, concatenação de className, etc.) terá um desempenho pior, adicionando mais sobrecarga.
+
+Ref: 
+- https://dev.to/srmagura/why-were-breaking-up-wiht-css-in-js-4g9b
+- https://dev.to/alim1496/avoid-using-inline-css-styles-5b6p
+- https://www.digitalocean.com/community/tutorials/what-is-dry-development
+
+
 [Back to top ⬆️](#pushpin-table-of-contents)
 
 ```
