@@ -184,9 +184,9 @@ interface MethodApiResponse {}
 type MethodApiParams = {};
 ```
 
-### Naming enums.
+### Naming constants.
 
-Enums and your object should be named following uppercase with underscore
+Enums and your object should be named following uppercase with underscore pattern
 
 ```ts
 enum ENUM_MY_FIRST_ENUM {
@@ -194,6 +194,26 @@ enum ENUM_MY_FIRST_ENUM {
   SECOND = "SECOND",
 }
 ```
+
+### Naming constants and enums
+
+Application constants and enums should be named following uppercase with underscore 
+
+```ts
+constant MY_FIRST_CONSTANT = {
+  somethingThatReallyMatters: 'nothing really matters',
+}
+```
+
+Additionaly, enums should have a "ENUM_" prefix
+
+```ts
+enum ENUM_MY_FIRST_ENUM {
+  MY_FIRST_ENUM = "MY_FIRST_ENUM",
+  SECOND = "SECOND",
+}
+```
+
 
 ### Naming Booleans
 
