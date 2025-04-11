@@ -16,6 +16,7 @@ we **highly recommend** reading it before you continue.
 - [Naming](#naming)
 - [Types](#types)
 - [Bad smells](#bad-smells)
+- [Escrevendo estilos - Boas práticas](https://github.com/QueroDelivery/frontend-development-guidelines/wiki/Escrevendo-estilos-%E2%80%90-Boas-pr%C3%A1ticas)
 
 ## Folder Structure
 
